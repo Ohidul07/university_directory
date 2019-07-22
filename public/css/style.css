@@ -1,0 +1,41 @@
+#addCategory{
+    float: right;
+    background-color:#9E5BBA;
+    border: none;
+}
+.input-bg{
+    background-color:#9E5BBA;
+    color:#fff;
+}
+#category_name{
+    padding-left: 10px;
+}
+#input_name{
+    padding-left: 10px;
+}
+
+.table-loading{
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0,0,0,0.2);
+    z-index: 9;
+}
+.table-loading i{
+    position: absolute;
+    top: 45%;
+}
+#addSubCategory{
+    float: right;
+    background-color:#9E5BBA;
+    border: none;
+}
+#addSubSubCategory{
+    float: right;
+    background-color:#9E5BBA;
+    border: none;
+}
