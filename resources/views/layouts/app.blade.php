@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>
-    Argon Dashboard
-  </title>
+  <title>@yield('title')</title>
   <!-- Favicon -->
   <link href="{{ url('assets/img/brand/favicon.png') }}" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -21,31 +18,27 @@
   <link rel="stylesheet" href="{{ url('assets/vendor/animate.css/animate.min.css') }}">
   <!-- custom css -->
   <link href="{{ url('css/style.css') }}" rel="stylesheet" />
-
+  <style type="text/css">
+    .logout-btn:focus { outline: none; cursor: pointer; }
+  </style>
   @yield('css')
-
 </head>
-
-<body class="">
-
+<body>
   <!-- navbar mobile & sidebar  -->
-     @include('layouts.navbar-mobile')
+  @include('layouts.navbar-mobile')
   <!-- navbar mobile & sidebar end -->
-
   <div class="main-content">
-
     <!-- Navbar -->
-        @include('layouts.navbar')
+    @include('layouts.navbar')
     <!-- End Navbar -->
-
     <!-- Header -->
-        @include('layouts.header')
+    @include('layouts.header')
     <!-- Header end-->
-
     <!-- content -->
-        @include('layouts.content')
+    <div class="container-fluid mt-4">
+     @yield('content')   
+    </div>
     <!-- content end -->
-    
   </div>
   <!--   Core   -->
   <script src="{{ url('assets/js/plugins/jquery/dist/jquery.min.js') }}"></script>
@@ -55,7 +48,6 @@
   <script src="{{ url('js/script.js') }}"></script>
   <script src="{{ url('assets/vendor/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
   @yield('script')
 </body>
 

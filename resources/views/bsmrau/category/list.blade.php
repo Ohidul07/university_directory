@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
-@section('css')
-
-@endsection
+@section('title', 'Categories | BSMRAU')
+@section('header', 'Categories')
 
 @section('content')
   
@@ -106,67 +105,26 @@
 
     function editValue(id){
       $.get('/category/edit/'+id,function(data){
-          $('#category_name').val(data.name);
-          $('#category_id').val(data.id);
-          // console.log(data.id);
-	  })
-	  .fail(function(data){
+          $('#category_name').val(data[0].name);
+          $('#category_id').val(data[0].id);
+	  }).fail(function(data){
 
-      })
+      });
     }
 
     function deleteValue(id){
 		$('.table-loading').css('display','block');
-      	$.get('/category/delete/'+id,function(data){
-          	if(data==1){
-            	swal({
-					title: 'Are you sure?',
-					text: "You won't be able to revert this!",
-					type: 'warning',
-					buttons:{
-						confirm: {
-							text : 'Yes, delete it!',
-							className : 'btn btn-success'
-						},
-						cancel: {
-							visible: true,
-							className: 'btn btn-danger'
-						}
-					}
-				})
-			    .then((Delete) => {
-					if (Delete) {
-						swal({
-							title: 'Deleted!',
-							text: 'Your file has been deleted.',
-							type: 'success',
-							buttons : {
-								confirm: {
-									className : 'btn btn-success'
-								}
-							}
-						});
-						var page = $('.pagination').find('.active').children().html();
-						getItems('/category/list?page='+page,'itemsDiv');
-					} 
-					else{
-						swal.close();
-						$('.table-loading').css('display','none');
-					}
-				});
-          	}
-          	else{
-                $.notifyDefaults({
-                    type: 'danger',
-                    allow_dismiss: true
-                });
-				$.notify('Try again.Something wrong.');
-				$('.table-loading').css('display','none');
-            }
-	  })
-	  .fail(function(data){
+		ask('/category/delete/'+id,'Category deleted successfully','/category/list');
+    }
 
-      })
+    function active(id){
+		$('.table-loading').css('display','block');
+		ask('/category/active/'+id,'Category activated successfully','/category/list');
+    }
+
+    function deactive(id){
+		$('.table-loading').css('display','block');
+		ask('/category/deactive/'+id,'Category deactivated successfully','/category/list');
     }
 
     $('#updateForm').submit(function(e){
@@ -179,8 +137,7 @@
                     type: 'success',
                     allow_dismiss: true
 				});
-				var page = $('.pagination').find('.active').children().html();
-				getItems('/category/list?page='+page,'itemsDiv');
+				getItems('/category/list','itemsDiv');
                 $.notify('Category updated successfully.');
             }
             else{

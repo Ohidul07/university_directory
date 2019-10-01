@@ -11,14 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
-        // DB::table('categories')->insert([
-        //     [
-        //         'type'=>'administration',
-        //     ],
-        //     [
-        //         'type'=>'academic',
-        //     ]
-        // ]);
+        $this->call(UsersTableSeeder::class);
     }
 }

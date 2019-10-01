@@ -5,8 +5,8 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Brand -->
-      <a class="navbar-brand pt-0" href="#">
-        <img src="{{ url('/assets/img/brand/blue.png') }}" class="navbar-brand-img" alt="...">
+      <a class="navbar-brand pt-0" href="/">
+        <img src="{{ url('/assets/img/brand/logo.png') }}" class="navbar-brand-img" alt="...">
       </a>
       <!-- User -->
       <ul class="nav align-items-center d-md-none">
@@ -22,15 +22,15 @@
             <div class=" dropdown-header noti-title">
               <h6 class="text-overflow m-0">Welcome!</h6>
             </div>
-            <a href="./examples/profile.html" class="dropdown-item">
+            <!-- <a href="./examples/profile.html" class="dropdown-item">
               <i class="ni ni-single-02"></i>
               <span>My profile</span>
-            </a>
+            </a> -->
             <div class="dropdown-divider"></div>
-            <a href="#!" class="dropdown-item">
-              <i class="ni ni-user-run"></i>
-              <span>Logout</span>
-            </a>
+            <form method="post" action="/logout">
+              @csrf
+              <button type="submit" class="dropdown-item logout-btn"><i class="ni ni-user-run"></i><span>Logout</span></button>
+            </form>
           </div>
         </li>
       </ul>

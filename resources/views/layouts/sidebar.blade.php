@@ -23,27 +23,27 @@
         </li>
         <li class="nav-item">
         <a class="nav-link " href="{{ url('/category/list')}}">
-            <i class="ni ni-planet text-blue"></i> Category
+            <i class="ni ni-align-left-2 text-blue"></i> Category
         </a>
         </li>
         <li class="nav-item">
         <a class="nav-link " href="{{ url('/subcategory/list')}}">
-            <i class="ni ni-pin-3 text-orange"></i> SubCategory
+            <i class="ni ni-align-left-2 text-orange"></i> Sub-Category
         </a>
         </li>
         <li class="nav-item">
         <a class="nav-link " href="{{ url('/subsubcategory/list')}}">
-            <i class="ni ni-single-02 text-yellow"></i> SubSubCategory
+            <i class="ni ni-align-left-2 text-yellow"></i> Sub-Sub-Category
         </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link " href="{{ url('/designation/list')}}">
-            <i class="ni ni-bullet-list-67 text-red"></i> Designation
+        <a class="nav-link " href="{{ url('/designations/list')}}">
+            <i class="ni ni-tie-bow text-red"></i> Designation
         </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="{{ url('/person/list')}}">
-            <i class="ni ni-key-25 text-info"></i> Person
+        <a class="nav-link" href="{{ url('/persons/list')}}">
+            <i class="ni ni-single-02 text-info"></i> Person
         </a>
         </li>
     </ul>
