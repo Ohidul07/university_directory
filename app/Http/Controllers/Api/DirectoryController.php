@@ -101,4 +101,28 @@ class DirectoryController extends Controller
 
 		return json_encode($data);
 	}
+
+	public function person($id){
+		$data['persons'] = DB::table('persons')
+			->leftJoin('categories','categories.id','=','persons.category_id')
+            ->leftJoin('sub_categories','sub_categories.id','=','persons.sub_category_id')
+            ->leftJoin('sub_sub_categories','sub_sub_categories.id','=','persons.sub_sub_category_id')
+            ->leftJoin('designations','designations.id','=','persons.designation_id')
+            ->where('persons.deleted_at',null)
+			->where('persons.active',1)
+			->where('persons.id',$id)
+			->select('persons.*','categories.name as category_name','sub_categories.name as sub_category_name','sub_sub_categories.name as sub_sub_category_name','designations.name as designation_name')
+			->first();
+		if($data['persons']->image){
+			$data['persons']->image = 'http://bsmrau.orangebd.com'.$data['persons']->image;
+		}else{
+			$data['persons']->image = 'http://bsmrau.orangebd.com'.'/persons/user.png';
+		}
+
+		return json_encode($data);
+	}
+
+	public function privacy(){
+		return view('privacy');
+	}
 }

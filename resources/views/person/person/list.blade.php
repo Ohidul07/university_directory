@@ -192,19 +192,46 @@
     $('#addForm').submit(function(e){
 		e.preventDefault();
 		$('.table-loading').css('display','block');
-		if($('#category_id').val()){
-			var category_id = 1;
+		var category_id = 0;
+		var sub_category_id = 0;
+		var sub_sub_category_id = 0;
+		if($('#subsubcategory_id').val()>0){
+			sub_sub_category_id = 1;
 		}else{
-			var category_id = 0;
+			$('#subsubcategory_id option').each(function(index){
+				if(index>0){
+					sub_sub_category_id = 0;
+					alert('Select Sub-Sub-Category');
+				}else{
+					sub_sub_category_id = 1;
+				}
+			});
+		}
+		if($('#subcategory_id').val()>0){
+			sub_category_id = 1;
+		}else{
+			$('#subcategory_id option').each(function(index){
+				if(index>0){
+					sub_category_id = 0;
+					alert('Select Sub-Category');
+				}else{
+					sub_category_id = 1;
+				}
+			});
+		}
+		if($('#category_id').val()){
+			category_id = 1;
+		}else{
+			category_id = 0;
 			alert('Select Category');
 		}
 		if($('#designation_id').val()){
-			var designation_id = 1;
+			designation_id = 1;
 		}else{
-			var designation_id = 0;
+			designation_id = 0;
 			alert('Select Designation');
 		}
-		if(category_id==1 && designation_id==1){
+		if(category_id==1 && sub_category_id==1 && sub_sub_category_id==1 && designation_id==1){
 			$.ajax({
 				url: '/persons/store',
 				dataType: 'text',
@@ -295,19 +322,46 @@
     $('#updateForm').submit(function(e){
 		e.preventDefault();
 		$('.table-loading').css('display','block');
-		if($('#edit_category_id').val()){
-			var category_id = 1;
+		var category_id = 0;
+		var sub_category_id = 0;
+		var sub_sub_category_id = 0;
+		if($('#subsubcategory_id').val()>0){
+			sub_sub_category_id = 1;
 		}else{
-			var category_id = 0;
+			$('#subsubcategory_id option').each(function(index){
+				if(index>0){
+					sub_sub_category_id = 0;
+					alert('Select Sub-Sub-Category');
+				}else{
+					sub_sub_category_id = 1;
+				}
+			});
+		}
+		if($('#subcategory_id').val()>0){
+			sub_category_id = 1;
+		}else{
+			$('#subcategory_id option').each(function(index){
+				if(index>0){
+					sub_category_id = 0;
+					alert('Select Sub-Category');
+				}else{
+					sub_category_id = 1;
+				}
+			});
+		}
+		if($('#edit_category_id').val()){
+			category_id = 1;
+		}else{
+			category_id = 0;
 			alert('Select Category');
 		}
 		if($('#edit_designation_id').val()){
-			var designation_id = 1;
+			designation_id = 1;
 		}else{
-			var designation_id = 0;
+			designation_id = 0;
 			alert('Select Designation');
 		}
-		if(category_id==1 && designation_id==1){
+		if(category_id==1 && sub_category_id==1 && sub_sub_category_id==1 && designation_id==1){
 			$.ajax({
 				url: '/persons/update',
 				dataType: 'text',

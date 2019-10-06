@@ -76,5 +76,6 @@ Route::prefix('persons')->middleware('auth')->group(function(){
 
 Route::get('/clear', function() {
     Artisan::call('cache:clear');
+    Artisan::call('config:cache');
     return "Cache is cleared";
 });

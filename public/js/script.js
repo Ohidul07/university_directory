@@ -26,7 +26,7 @@ function getItems(url,divId='itemsDiv'){
 $('#category_id').change(function(){
 	$.get('/subsubcategory/getSubCategory/'+$('#category_id').val(),function(data){
 		var html = '';
-		html += '<option value="" selected disabled>Select Sub-Category</option>';
+		html += '<option value="0" selected disabled>Select Sub-Category</option>';
 		$.each(data,function(key,value){
 			html += '<option value="'+value.id+'">'+value.name+'</option>';
 		});
@@ -40,7 +40,7 @@ $('#category_id').change(function(){
 $('#subcategory_id').change(function(){
 	$.get('/subsubcategory/getSubSubCategory/'+$('#subcategory_id').val(),function(data){
 		var html = '';
-		html += '<option value="" selected disabled>Select Sub-Sub-Category</option>';
+		html += '<option value="0" selected disabled>Select Sub-Sub-Category</option>';
 		$.each(data,function(key,value){
 			html += '<option value="'+value.id+'">'+value.name+'</option>';
 		});
@@ -54,7 +54,7 @@ $('#subcategory_id').change(function(){
 $('#edit_category_id').change(function(){
 	$.get('/subsubcategory/getSubCategory/'+$('#edit_category_id').val(),function(data){
 		var html = '';
-		html += '<option value="" selected disabled>Select Sub-Category</option>';
+		html += '<option value="0" selected disabled>Select Sub-Category</option>';
 		$.each(data,function(key,value){
 			html += '<option value="'+value.id+'">'+value.name+'</option>';
 		});
@@ -68,7 +68,7 @@ $('#edit_category_id').change(function(){
 $('#edit_subcategory_id').change(function(){
 	$.get('/subsubcategory/getSubSubCategory/'+$('#edit_subcategory_id').val(),function(data){
 		var html = '';
-		html += '<option value="" selected disabled>Select Sub-Sub-Category</option>';
+		html += '<option value="0" selected disabled>Select Sub-Sub-Category</option>';
 		$.each(data,function(key,value){
 			html += '<option value="'+value.id+'">'+value.name+'</option>';
 		});

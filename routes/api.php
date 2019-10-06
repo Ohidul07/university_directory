@@ -13,7 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('/privacy', 'Api\DirectoryController@privacy');
 Route::get('/layer', 'Api\DirectoryController@index');
 Route::get('/layer/{id}', 'Api\DirectoryController@subLayers');
 Route::get('/sub_layer/{id}', 'Api\DirectoryController@subSubLayers');
 Route::get('/sub_sub_layer/{id}', 'Api\DirectoryController@subSubSubLayers');
+Route::get('/person/{id}', 'Api\DirectoryController@person');
