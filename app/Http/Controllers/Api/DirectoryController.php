@@ -122,6 +122,33 @@ class DirectoryController extends Controller
 		return json_encode($data);
 	}
 
+	public function search($query){
+		$result['persons'] = DB::table('persons')
+			->leftJoin('categories','categories.id','=','persons.category_id')
+            ->leftJoin('sub_categories','sub_categories.id','=','persons.sub_category_id')
+            ->leftJoin('sub_sub_categories','sub_sub_categories.id','=','persons.sub_sub_category_id')
+            ->leftJoin('designations','designations.id','=','persons.designation_id')
+            ->where('persons.deleted_at',null)
+			->where('persons.active',1)
+			->where(function($whereQuery) use ($query){
+                $whereQuery->where('persons.name','like','%'.$query.'%')
+					->orWhere('persons.contact','like','%'.$query.'%')
+					->orWhere('persons.email','like','%'.$query.'%')
+					->orWhere('designations.name','like','%'.$query.'%');
+            })
+            ->select('persons.*','categories.name as category_name','sub_categories.name as sub_category_name','sub_sub_categories.name as sub_sub_category_name','designations.name as designation_name')
+			->get();
+		for($i=0;$i<count($data['persons']);$i++){
+			if($data['persons'][$i]->image){
+				$data['persons'][$i]->image = 'http://bsmrau.orangebd.com'.$data['persons'][$i]->image;
+			}else{
+				$data['persons'][$i]->image = 'http://bsmrau.orangebd.com'.'/persons/user.png';
+			}
+		}
+		return json_encode($result);
+			
+	}
+
 	public function privacy(){
 		return view('privacy');
 	}
